@@ -1,0 +1,26 @@
+.spi-app__logo {
+  background: rgba(255, 255, 255, 0.2);
+  margin: 12px 24px 12px 0;
+  padding: 8px 10px;
+  float: left;
+  line-height: initial;
+  font-size: 20px;
+  color: white;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  > img {
+    height: 24px;
+    margin-right: 10px;
+  }
+}
+
+.spi-app__content {
+  $headerHeight: 64px;
+  $footerHeight: 70px;
+
+  min-height: calc(100vh - #{$headerHeight} - #{$footerHeight}) !important;
+  padding: 0 50px;
+  margin-top: $headerHeight;
+}
