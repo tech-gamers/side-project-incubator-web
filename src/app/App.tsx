@@ -1,22 +1,21 @@
 import React from 'react';
 import './App.scss';
-import { Layout, Menu } from 'antd';
+import { Layout } from 'antd';
 import Home from './home/Home';
 
-const { Header, Content, Footer } = Layout;
+const { Content, Footer } = Layout;
 
 function App() {
   return (
     <Layout>
-      <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
-        <div className="spi-app__logo">
-          <img src="/assets/images/logo.png" alt="logo" />
-          玩儿技术
-        </div>
-        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
-          <Menu.Item key="1">Projects</Menu.Item>
-        </Menu>
-      </Header>
+      <header className="spi-app__header">
+        <section className="container">
+          <div className="spi-app__logo">
+            <img src="/assets/images/logo.png" alt="logo" />
+            玩儿技术
+          </div>
+        </section>
+      </header>
       <Content className="spi-app__content">
         <Home />
       </Content>

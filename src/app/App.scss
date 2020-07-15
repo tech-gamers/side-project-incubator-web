@@ -1,3 +1,11 @@
+.spi-app__header {
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  color: rgba(255, 255, 255, 0.65);
+  background: #001529;
+}
+
 .spi-app__logo {
   background: rgba(255, 255, 255, 0.2);
   margin: 12px 24px 12px 0;
@@ -21,6 +29,5 @@
   $footerHeight: 70px;
 
   min-height: calc(100vh - #{$headerHeight} - #{$footerHeight}) !important;
-  padding: 0 50px;
   margin-top: $headerHeight;
 }
