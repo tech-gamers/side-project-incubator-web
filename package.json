@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "author": "https://github.com/yc-shawn",
-  "homepage": "https://tech-gamers.github.io/side-project-incubator-web/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -16,11 +15,13 @@
     "@fortawesome/free-brands-svg-icons": "^5.14.0",
     "@fortawesome/free-solid-svg-icons": "^5.14.0",
     "@fortawesome/react-fontawesome": "^0.1.11",
+    "@types/react-router-dom": "^5.1.5",
     "antd": "^4.4.2",
     "bootstrap": "^4.5.0",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "typescript": "~3.7.2"
   },
