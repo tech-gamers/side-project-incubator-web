@@ -2,33 +2,34 @@ import React, { Component } from 'react';
 import './App.scss';
 import { Layout } from 'antd';
 import Home from './home/Home';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Dashboard from './dashboard/Dashboard';
+import Header from './header/Header'
+import User from './user/User';
 
 const { Content, Footer } = Layout;
 
 class App extends Component<{}, {}> {
   render(){
     return (
-      <Layout>
-        <header className="spi-app__header">
-          <section className="container">
-            <div className="spi-app__logo">
-              <img src="/assets/images/logo.png" alt="logo" />
-              玩儿技术
-            </div>
-          </section>
-        </header>
-        <Content className="spi-app__content">
-          <Router>
+      <Router>
+        <Layout>
+          {/* Header */}
+          <Header />
+
+          {/* Content */}
+          <Content className="spi-app__content">
             <Switch>
-              <Route exact path="/">
-                <Home />
-              </Route>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/dashboard" component={Dashboard} />
+              {/* <Route exact path="/users/:userId" component={User} /> */}
             </Switch>
-          </Router>
-        </Content>
-        <Footer style={{ textAlign: 'center' }}>©2020 Created by Tech Gamers</Footer>
-      </Layout>
+          </Content>
+
+          {/* Footer */}
+          <Footer className="text-center">©2020 Created by Tech Gamers</Footer>
+        </Layout>
+      </Router>
     );
   }
 }
