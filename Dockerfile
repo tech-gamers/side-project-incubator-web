@@ -6,8 +6,9 @@ ADD package.json .
 ADD yarn.lock .
 RUN yarn install
 
-ADD public src tsconfig.json ./
-
+ADD tsconfig.json ./
+ADD ./public ./public
+ADD ./src ./src
 RUN yarn build
 
 FROM nginx:alpine As host
