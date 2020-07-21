@@ -1,7 +1,6 @@
 FROM node:10 As builder
 
 WORKDIR /app
-ENV NODE_ENV=production
 
 ADD package.json .
 ADD yarn.lock .
