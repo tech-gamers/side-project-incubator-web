@@ -7,6 +7,7 @@ import Dashboard from './dashboard/Dashboard';
 import Header from './header/Header'
 import User from './user/User';
 import ErrorBoundary from './ErrorBoundary';
+import NoMatch from './NoMatch';
 
 const { Content, Footer } = Layout;
 
@@ -25,6 +26,7 @@ class App extends Component<{}, {}> {
                 <Route exact path="/" component={Home} />
                 <Route exact path="/dashboard" component={Dashboard} />
                 <Route exact path="/users/:userId" component={User} />
+                <Route component={NoMatch}/>
               </Switch>
             </Content>
 
