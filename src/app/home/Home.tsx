@@ -14,7 +14,7 @@ class Home extends Component<{}, {}> {
    * Login use github
    */
   onGithubLogin(): void {
-    window.location.href = '/auths/auth/github';
+    window.location.href = 'https://api.tech-gamers.live/auths/auth/github';
   }
 
   render() {
