@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './User.scss';
 import { Avatar, Descriptions, Button } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
-import axios from 'axios';
+import { api } from '../utils';
 
 class User extends Component<{ history: any, match: any }, { user: any }> {
   state = {
@@ -23,7 +23,7 @@ class User extends Component<{ history: any, match: any }, { user: any }> {
    */
   componentDidMount() {
     const { userId } = this.props.match.params;
-    axios.get(`/api/users/${userId}`).then((response) => {
+    api.get(`users/${userId}`).then((response) => {
       this.setState({ user: response.data });
     });
   }
@@ -32,7 +32,7 @@ class User extends Component<{ history: any, match: any }, { user: any }> {
    * Sign out current user
    */
   onSignOut() {
-    axios.delete('/auths/sign_out').then(() => this.props.history.push('/'));
+    api.delete('auths/sign_out').then(() => this.props.history.push('/'));
   }
 
   render() {
