@@ -6,7 +6,7 @@ ADD package.json .
 ADD yarn.lock .
 RUN yarn install
 
-ADD . .
+ADD public/ src/ tsconfig.json ./
 
 RUN yarn build
 
