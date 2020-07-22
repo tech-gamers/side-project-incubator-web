@@ -11,6 +11,7 @@ class ErrorBoundary extends Component<any, {hasError: boolean, error: Error | nu
   }
 
   componentDidCatch(error: any) {
+    console.log('catched error');
     console.error(error);
   }
 

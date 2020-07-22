@@ -23,16 +23,23 @@ class User extends Component<{ history: any, match: any }, { user: any }> {
    */
   componentDidMount() {
     const { userId } = this.props.match.params;
-    api.get(`users/${userId}`).then((response) => {
-      this.setState({ user: response.data });
-    });
+    api
+      .get(`users/${userId}`)
+      .then((response) => {
+        this.setState({ user: response.data });
+      })
+      .catch(({ response }) => {
+        if (response.status === 401) {
+          this.onSignOut();
+        }
+      });
   }
 
   /**
    * Sign out current user
    */
   onSignOut() {
-    api.delete('auths/sign_out').then(() => this.props.history.push('/'));
+    api.delete('/logout').then(() => this.props.history.push('/'));
   }
 
   render() {
