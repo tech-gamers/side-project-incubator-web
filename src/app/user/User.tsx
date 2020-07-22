@@ -62,7 +62,7 @@ class User extends Component<{ history: any, match: any }, { user: any }> {
           </a>
         </h6>
         <h6>
-          在 <a href="https://github.com/tech-gamers/ideas/issues">这里</a> 参与正价进行中的项目或者发布新想法
+          在 <a href="https://github.com/tech-gamers/ideas/issues">这里</a> 参与正在进行中的项目或者发布新想法
         </h6>
         <h6>扫码加入微信群</h6>
         <img src="/assets/images/wechat-group.jpeg" alt="wechat group QR code" style={{ maxWidth: '300px' }} />
