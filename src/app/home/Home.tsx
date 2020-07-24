@@ -10,7 +10,7 @@ export default function Home() {
       <h2>在这里找到志同道合的技术热爱者一起享受创造的乐趣！社区网站正在从零开始搭建当中。我们需要你的协助</h2>
       <br />
       <form action="https://api.tech-gamers.live/auth/github" method="post">
-        <button type="submit">
+        <button type="submit" className="ant-btn ant-btn-lg ant-btn-block">
           Sign in with Github &nbsp;
           <FontAwesomeIcon icon={faGithub} />
         </button>
