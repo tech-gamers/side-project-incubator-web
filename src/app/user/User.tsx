@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './User.scss';
 import { Avatar, Descriptions, Button } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
-import { api } from '../utils';
+import { api } from 'app/utils';
 
 export default function User(props: any) {
   const [user, setUser] = useState({

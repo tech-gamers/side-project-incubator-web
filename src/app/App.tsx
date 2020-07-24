@@ -1,13 +1,14 @@
 import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.scss';
 import { Layout } from 'antd';
-import Home from './home/Home';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Dashboard from './dashboard/Dashboard';
-import Header from './header/Header'
-import User from './user/User';
-import ErrorBoundary from './ErrorBoundary';
-import NoMatch from './NoMatch';
+
+import ErrorBoundary from 'app/ErrorBoundary';
+import NoMatch from 'app/NoMatch';
+import Home from 'app/home/Home';
+import Dashboard from 'app/dashboard/Dashboard';
+import Header from 'app/header/Header';
+import User from 'app/user/User';
 
 const { Content, Footer } = Layout;
 
