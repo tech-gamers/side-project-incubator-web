@@ -1,15 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import './User.scss';
 import { Avatar, Descriptions, Button } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import { api } from 'app/utils';
+import { userContext } from 'app/contexts/user.context';
 
 export default function User(props: any) {
-  const [user, setUser] = useState({
-    name: '',
-    email: '',
-    avatar_url: undefined
-  });
+  const { user, setUser } = useContext(userContext);
 
   /**
    * Sign out current user
