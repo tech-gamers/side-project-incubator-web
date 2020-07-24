@@ -12,7 +12,7 @@ import Header from 'app/header/Header';
 import User from 'app/user/User';
 
 // Contexts
-import UserContextProvider from './contexts/user.context';
+import GlobalContextProvider from 'app/contexts/global.context';
 
 const { Content, Footer } = Layout;
 
@@ -21,7 +21,7 @@ export default function App() {
     <ErrorBoundary>
       <Router>
         <Layout>
-          <UserContextProvider>
+          <GlobalContextProvider>
             {/* Header */}
             <Header />
 
@@ -34,7 +34,7 @@ export default function App() {
                 <Route component={NoMatch}/>
               </Switch>
             </Content>
-          </UserContextProvider>
+          </GlobalContextProvider>
 
           {/* Footer */}
           <Footer className="text-center">©2020 Created by Tech Gamers</Footer>
