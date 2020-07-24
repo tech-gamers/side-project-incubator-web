@@ -19,26 +19,26 @@ describe('useStatusForAsyncCall', () => {
     jest.useFakeTimers();
   });
 
-  it('sets initial status to false', () => {
+  it('sets initial status to idle', () => {
     const { result } = renderHook(() => useStatusForAsyncCall(asyncCall));
     const [status, wrappedCall] = result.current;
 
-    expect(status).toBe(false);
+    expect(status.isIdle()).toBe(true);
   });
 
-  it('sets state to true during the call', () => {
+  it('sets state to busy during the call', () => {
     const { result } = renderHook(() => useStatusForAsyncCall(asyncCall));
     const [status, wrappedCall] = result.current;
 
     act(() => {
       wrappedCall();
       setTimeout(() => {
-        expect(status).toBe(true);
+        expect(status.isBusy()).toBe(true);
       }, SHORTER_PERIOD);
     });
   });
 
-  it('sets state to false after the call', () => {
+  it('sets state to completed after the call', () => {
     const { result } = renderHook(() => useStatusForAsyncCall(asyncCall));
     const [status, wrappedCall] = result.current;
 
@@ -46,7 +46,7 @@ describe('useStatusForAsyncCall', () => {
       wrappedCall();
 
       setTimeout(() => {
-        expect(status).toBe(false);
+        expect(status.isCompleted()).toBe(true);
       }, LONGER_PERIOD);
     });
   });
