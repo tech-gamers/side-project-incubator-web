@@ -3,10 +3,10 @@ import './User.scss';
 import { Avatar, Descriptions, Button } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import { api } from 'app/utils';
-import { userContext } from 'app/contexts/user.context';
+import { UserContext } from 'app/contexts/user.context';
 
 export default function User(props: any) {
-  const { user, setUser } = useContext(userContext);
+  const { user, setUser } = useContext(UserContext);
 
   /**
    * Sign out current user
