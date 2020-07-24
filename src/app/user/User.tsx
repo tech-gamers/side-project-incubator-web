@@ -11,8 +11,9 @@ export default function User(props: any) {
   /**
    * Sign out current user
    */
-  const onSignOut = ()  => {
-    api.delete('logout').then(() => props.history.push('/'));
+  const onSignOut = () => {
+    // TODO: sign out only already signed in
+    api.delete('user/session').finally(() => props.history.push('/'));
   }
 
   /**
