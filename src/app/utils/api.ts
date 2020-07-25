@@ -39,21 +39,21 @@ export const api: API & CSRFTracker = {
     return this.csrfToken;
   },
 
+  // TODO: a global error handler
+  // TODO: auto handshake and retry on 422
   async request(method: RESTMethod, url: string) {
-    try {
-      const res = await axios.request({
-        method: method,
-        url: `${BASE_URL}/${url}`,
-        headers: {
-          'X-CSRF-Token': this.csrfToken
-        }
-      });
-      this.csrfToken = res.headers['x-csrf-token'];
-      return res;
-    } catch (err) {
-      // TODO: a global error handler
-      // TODO: auto handshake and retry on 422
-      window.console.error(err);
-    }
+    const res = await axios.request({
+      method: method,
+      baseURL: BASE_URL,
+      url: url,
+      xsrfCookieName: '_SPI_session',
+      xsrfHeaderName: 'X-CSRF-Token',
+      headers: {
+        'X-CSRF-Token': this.csrfToken
+      },
+      withCredentials: true
+    });
+    this.csrfToken = res.headers['x-csrf-token'];
+    return res;
   }
 };
