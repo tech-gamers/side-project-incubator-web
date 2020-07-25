@@ -33,4 +33,4 @@ jobs:
         run: yarn install --pure-lockfile
 
       - name: run tests
-        run: yarn run test
+        run: yarn test
