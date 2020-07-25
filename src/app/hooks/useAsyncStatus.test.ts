@@ -8,7 +8,7 @@ const LONGER_PERIOD = 700;
 const ASYNC_CALL_RETURN = 'ASYNC_CALL_RETURN_VALUE';
 
 const asyncCall = () =>
-  new Promise((resolve, reject) => {
+  new Promise((resolve, _reject) => {
     setTimeout(() => {
       resolve(ASYNC_CALL_RETURN);
     }, CALL_PERIOD);
@@ -17,7 +17,7 @@ const asyncCall = () =>
 const ASYNC_ERROR = new Error('Error');
 
 const errorAsyncCall = () =>
-  new Promise((resolve, reject) => {
+  new Promise((_resolve, _reject) => {
     setTimeout(() => {
       throw ASYNC_ERROR;
     }, CALL_PERIOD);
@@ -30,7 +30,7 @@ describe('useStatusForAsyncCall', () => {
 
   it('sets initial status to idle', () => {
     const { result } = renderHook(() => useAsyncCallStatus(asyncCall));
-    const [status, wrappedCall] = result.current;
+    const [status] = result.current;
 
     expect(status).toBe('idle');
   });
@@ -75,7 +75,7 @@ describe('useStatusForAsyncCall', () => {
 
   it('resolves to the same value as original call', () => {
     const { result } = renderHook(() => useAsyncCallStatus(asyncCall));
-    const [status, wrappedCall] = result.current;
+    const [, wrappedCall] = result.current;
 
     act(() => {
       wrappedCall().then((res) => {
@@ -86,7 +86,7 @@ describe('useStatusForAsyncCall', () => {
 
   it('throws same error as original call', () => {
     const { result } = renderHook(() => useAsyncCallStatus(asyncCall));
-    const [status, wrappedCall] = result.current;
+    const [, wrappedCall] = result.current;
 
     act(() => {
       wrappedCall().catch((err) => {
