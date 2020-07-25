@@ -1,5 +1,5 @@
 import { renderHook, act } from '@testing-library/react-hooks';
-import useAsyncCallStatus from './useAsyncCallStatus';
+import useAsyncCallStatus from './useAsyncStatus';
 
 const CALL_PERIOD = 500;
 const SHORTER_PERIOD = 100;
