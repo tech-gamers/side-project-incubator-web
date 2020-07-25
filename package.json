@@ -6,7 +6,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "lint": "yarn eslint 'src/**/*.ts' 'src/**/*.tsx'",
+    "pretest": "yarn eslint --ignore-path .gitignore 'src/**/*.ts' 'src/**/*.tsx' --fix",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "ghpage": "gh-pages -d build"
