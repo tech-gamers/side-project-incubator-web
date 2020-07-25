@@ -1,0 +1,44 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  linters:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - uses: actions/setup-node@v2-beta
+      with:
+        node-version: '14'
+
+    - name: install NPM packages
+      run: yarn install
+
+    - name: run linters
+      run: yarn eslint 'src/**/*.tsx'
+   
+  tests:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - uses: actions/setup-node@v2-beta
+      with:
+        node-version: '14'
+
+    - name: install NPM packages
+      run: yarn install
+
+    - name: run tests
+      run: yarn run test
