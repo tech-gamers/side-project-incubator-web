@@ -1,3 +1,4 @@
+import React from 'react';
 import './Home.scss';
 import { Button } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
