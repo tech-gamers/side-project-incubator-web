@@ -1,3 +1,5 @@
+![CI](https://github.com/tech-gamers/side-project-incubator-web/workflows/CI/badge.svg)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
