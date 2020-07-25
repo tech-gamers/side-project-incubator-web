@@ -1,8 +1,7 @@
-import React from 'react';
 import './Home.scss';
 import { Button } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithub, faWeixin } from '@fortawesome/free-brands-svg-icons';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 export default function Home() {
   /**
