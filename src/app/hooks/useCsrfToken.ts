@@ -6,7 +6,11 @@ export default (api: CSRFTracker): string => {
   const [csrfToken, setCsrfToken] = useState('');
 
   useEffect(() => {
-    api.handshake().then(setCsrfToken);
+    if (api.csrfToken === '') {
+      api.handshake().then(setCsrfToken);
+    } else {
+      setCsrfToken(api.csrfToken);
+    }
   }, [api, api.csrfToken]);
 
   return csrfToken;
