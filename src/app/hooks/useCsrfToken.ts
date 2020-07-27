@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
-import { api } from 'app/utils';
+// eslint-disable-next-line no-unused-vars
+import { CSRFTracker } from 'app/utils';
 
-export default (): [string, (v: string) => void] => {
+export default (api: CSRFTracker): string => {
   const [csrfToken, setCsrfToken] = useState('');
 
   useEffect(() => {
     api.handshake().then(setCsrfToken);
-  }, []);
+  }, [api, api.csrfToken]);
 
-  return [csrfToken, setCsrfToken];
+  return csrfToken;
 };
