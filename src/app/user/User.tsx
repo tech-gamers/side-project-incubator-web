@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useCallback } from 'react';
 import './User.scss';
 import { Avatar, Descriptions, Button } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
@@ -8,17 +8,11 @@ import { UserContext } from 'app/contexts/user.context';
 export default function User(props: any) {
   const { user, setUser } = useContext(UserContext);
 
-  /**
-   * Sign out current user
-   */
-  const onSignOut = () => {
+  const onSignOut = useCallback(() => {
     // TODO: sign out only already signed in
     api.delete('user/session').finally(() => props.history.push('/'));
-  }
+  }, [props.history]);
 
-  /**
-   * @override
-   */
   useEffect(() => {
     const { userId } = props.match.params;
     api
@@ -29,18 +23,12 @@ export default function User(props: any) {
           onSignOut();
         }
       });
-  })
+  }, [onSignOut, props.match.params, setUser]);
 
   return (
     <div className="container mt-5">
       <div className="text-center">
-        {
-          user.avatar_url ? (
-            <Avatar size={120} src={user.avatar_url} />
-          ) : (
-            <Avatar size={120} icon={<UserOutlined />} />
-          )
-        }
+        {user.avatar_url ? <Avatar size={120} src={user.avatar_url} /> : <Avatar size={120} icon={<UserOutlined />} />}
       </div>
       <Descriptions title="User Info">
         <Descriptions.Item label="User Name">{user.name}</Descriptions.Item>
