@@ -8,10 +8,10 @@ export default (api: CSRFTracker): string => {
   useEffect(() => {
     if (api.csrfToken === '') {
       api.handshake().then(setCsrfToken);
-    } else {
+    } else if (api.csrfToken !== csrfToken) {
       setCsrfToken(api.csrfToken);
     }
-  }, [api, api.csrfToken]);
+  }, [api, api.csrfToken, csrfToken]);
 
   return csrfToken;
 };
