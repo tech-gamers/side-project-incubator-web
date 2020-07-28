@@ -61,7 +61,7 @@ export const api: API & CSRFTracker = {
       if (REACT_APP_TOKEN) {
         requestConfig.headers['Authorization'] = `Bearer ${REACT_APP_TOKEN}`;
       } else {
-        console.error('REACT_APP_TOKEN not found in .env file');
+        throw 'REACT_APP_TOKEN not found in .env file';
       }
     }
 
