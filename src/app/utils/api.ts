@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-import axios, { AxiosResponse } from 'axios';
+import axios, { AxiosResponse, AxiosRequestConfig } from 'axios';
 
 const BASE_URL = 'https://api.tech-gamers.live/';
 
@@ -43,7 +43,7 @@ export const api: API & CSRFTracker = {
   // TODO: a global error handler
   // TODO: auto handshake and retry on 422
   async request<T>(method: RESTMethod, url: string): Promise<AxiosResponse<T>> {
-    const res = await axios.request<T>({
+    const requestConfig: AxiosRequestConfig = {
       method: method,
       baseURL: BASE_URL,
       url: url,
@@ -53,7 +53,14 @@ export const api: API & CSRFTracker = {
         'X-CSRF-Token': this.csrfToken
       },
       withCredentials: true
-    });
+    };
+
+    // Add bearer token when is in dev mode
+    if (process.env.NODE_ENV === 'development') {
+      requestConfig.headers['Authorization'] = `Bearer ${process.env.REACT_APP_TOKEN}`;
+    }
+
+    const res = await axios.request<T>(requestConfig);
     this.csrfToken = res.headers['x-csrf-token'];
     return res;
   }
