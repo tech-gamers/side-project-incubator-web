@@ -3,9 +3,10 @@ import './Home.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import useCsrfToken from 'app/hooks/useCsrfToken';
+import { api } from 'app/utils';
 
 export default function Home() {
-  const [csrfToken] = useCsrfToken();
+  const csrfToken = useCsrfToken(api);
   return (
     <div className="container mt-5">
       <h2>欢迎来到【玩儿技术】社区</h2>

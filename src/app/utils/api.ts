@@ -2,15 +2,15 @@ import axios from 'axios';
 
 const BASE_URL = 'https://api.tech-gamers.live/';
 
-type RESTMethod = 'get' | 'post' | 'put' | 'patch' | 'delete';
+export type RESTMethod = 'get' | 'post' | 'put' | 'patch' | 'delete';
 
-type API = {
+export type API = {
   [key in RESTMethod]: (url: string) => Promise<any>;
 } & {
   request: (method: RESTMethod, url: string) => Promise<any>;
 };
 
-type CSRFTracker = {
+export type CSRFTracker = {
   csrfToken: string;
   handshake: () => Promise<string>;
 };
