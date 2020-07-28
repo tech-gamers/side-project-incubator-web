@@ -1,13 +1,14 @@
-import axios from 'axios';
+// eslint-disable-next-line no-unused-vars
+import axios, { AxiosResponse } from 'axios';
 
 const BASE_URL = 'https://api.tech-gamers.live/';
 
 export type RESTMethod = 'get' | 'post' | 'put' | 'patch' | 'delete';
 
 export type API = {
-  [key in RESTMethod]: (url: string) => Promise<any>;
+  [key in RESTMethod]: <T>(url: string) => Promise<AxiosResponse<T>>;
 } & {
-  request: (method: RESTMethod, url: string) => Promise<any>;
+  request: <T>(method: RESTMethod, url: string) => Promise<AxiosResponse<T>>;
 };
 
 export type CSRFTracker = {
@@ -16,20 +17,20 @@ export type CSRFTracker = {
 };
 
 export const api: API & CSRFTracker = {
-  async get(url: string) {
-    return await this.request('get', url);
+  async get<T>(url: string): Promise<AxiosResponse<T>> {
+    return await this.request<T>('get', url);
   },
-  async post(url: string) {
-    return await this.request('post', url);
+  async post<T>(url: string): Promise<AxiosResponse<T>> {
+    return await this.request<T>('post', url);
   },
-  async put(url: string) {
-    return await this.request('put', url);
+  async put<T>(url: string): Promise<AxiosResponse<T>> {
+    return await this.request<T>('put', url);
   },
-  async patch(url: string) {
-    return await this.request('patch', url);
+  async patch<T>(url: string): Promise<AxiosResponse<T>> {
+    return await this.request<T>('patch', url);
   },
-  async delete(url: string) {
-    return await this.request('delete', url);
+  async delete<T>(url: string): Promise<AxiosResponse<T>> {
+    return await this.request<T>('delete', url);
   },
 
   csrfToken: '',
@@ -41,8 +42,8 @@ export const api: API & CSRFTracker = {
 
   // TODO: a global error handler
   // TODO: auto handshake and retry on 422
-  async request(method: RESTMethod, url: string) {
-    const res = await axios.request({
+  async request<T>(method: RESTMethod, url: string): Promise<AxiosResponse<T>> {
+    const res = await axios.request<T>({
       method: method,
       baseURL: BASE_URL,
       url: url,
