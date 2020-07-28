@@ -56,8 +56,13 @@ export const api: API & CSRFTracker = {
     };
 
     // Add bearer token when is in dev mode
-    if (process.env.NODE_ENV === 'development') {
-      requestConfig.headers['Authorization'] = `Bearer ${process.env.REACT_APP_TOKEN}`;
+    const { NODE_ENV, REACT_APP_TOKEN } = process.env;
+    if (NODE_ENV === 'development') {
+      if (REACT_APP_TOKEN) {
+        requestConfig.headers['Authorization'] = `Bearer ${REACT_APP_TOKEN}`;
+      } else {
+        console.error('REACT_APP_TOKEN not found in .env file');
+      }
     }
 
     const res = await axios.request<T>(requestConfig);
