@@ -19,7 +19,7 @@ export default function User(props: any) {
       .get(`users/${userId}`)
       .then((response) => setUser(response.data))
       .catch((ex) => {
-        if (ex.response.status === 401) {
+        if (ex?.response?.status === 401) {
           onSignOut();
         } else {
           throw ex;
